@@ -38,8 +38,19 @@ roc-time-parser parse --text "植保事業群各事業部114年第一季年終�
 
 ## Evaluate (smoke + metrics)
 ```bash
-python scripts/evaluate_pipeline.py --input data/spans_labeled.jsonl --refdate 2026-02-04 --stage a --threshold 0.5
+python scripts/evaluate_pipeline.py --input data/spans_labeled.jsonl --refdate 2026-02-04 --stage a --threshold 0.5 --out artifacts/eval_runA.jsonl
 ```
+
+## Compare hyperparameter runs
+After training different configs and evaluating each with a distinct `--out`:
+```bash
+python scripts/compare_eval_runs.py artifacts/eval_runA.jsonl artifacts/eval_runB.jsonl artifacts/eval_runC.jsonl
+```
+Optional short names:
+```bash
+python scripts/compare_eval_runs.py --names "lr5e-5" "lr3e-5+aug" "lr2e-5" artifacts/eval_runA.jsonl artifacts/eval_runB.jsonl artifacts/eval_runC.jsonl
+```
+Prints a table: Run, Precision, Recall, F1, TP, FP, FN, N, and the run with best F1.
 
 ## Data
 Expected JSONL formats live under `data/`:
