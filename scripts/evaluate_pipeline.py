@@ -68,6 +68,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--refdate", default=date.today().isoformat())
     ap.add_argument("--stage", choices=["a", "b", "e2e", "all"], default="all")
     ap.add_argument("--threshold", type=float, default=0.5, help="Extractor threshold.")
+    ap.add_argument("--extractor-dir", default=None, help="Trained extractor model directory (default: EXTRACTOR_MODEL_DIR or artifacts/extractor_runA, artifacts/extractor).")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--out", default="artifacts/eval_results.jsonl")
     args = ap.parse_args(argv)
@@ -91,7 +92,7 @@ def main(argv: list[str] | None = None) -> int:
         try:
             from roc_time_parser.extractor.model import load_extractor
 
-            extractor, tokenizer = load_extractor()
+            extractor, tokenizer = load_extractor(model_dir=args.extractor_dir)
         except Exception as e:  # noqa: BLE001
             print(f"[warn] extractor not available: {e}")
             extractor, tokenizer = None, None

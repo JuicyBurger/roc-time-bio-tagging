@@ -28,7 +28,11 @@ def load_extractor(model_dir: str | Path | None = None, base_model: str = "micro
     if model_dir:
         candidates.append(Path(model_dir))
     root = _repo_root()
-    candidates.extend([root / "artifacts" / "extractor", root / "models" / "extractor"])
+    candidates.extend([
+        root / "artifacts" / "extractor_runA",
+        root / "artifacts" / "extractor",
+        root / "models" / "extractor",
+    ])
 
     for c in candidates:
         if c.exists() and (c / "config.json").exists():

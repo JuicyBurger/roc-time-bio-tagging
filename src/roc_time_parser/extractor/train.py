@@ -44,7 +44,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="roc_time_parser.extractor.train")
     ap.add_argument("--train", required=True, help="Train jsonl (spans_labeled format).")
     ap.add_argument("--dev", required=True, help="Dev jsonl (spans_labeled format).")
-    ap.add_argument("--base-model", default="microsoft/Multilingual-MiniLM-L12-H384")
+    ap.add_argument("--base-model", default="bert-base-chinese")
     ap.add_argument("--output-dir", required=True)
     ap.add_argument("--epochs", type=int, default=3)
     ap.add_argument("--batch-size", type=int, default=8)
