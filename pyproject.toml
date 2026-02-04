@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "roc-time-parser"
+version = "0.1.0"
+description = "ROC/AD time parsing pipeline (BIO span extractor + DSL normalizer + deterministic resolver)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+authors = [{ name = "KSI" }]
+dependencies = [
+  "transformers",
+  "datasets",
+  "accelerate",
+  "torch",
+  "evaluate",
+  "seqeval",
+  "pydantic",
+  "rapidfuzz",
+  "requests",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "pytest-cov",
+  "ruff",
+]
+
+[project.scripts]
+roc-time-parser = "roc_time_parser.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

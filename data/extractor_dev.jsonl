@@ -1,0 +1,12 @@
+{"id": "n0093", "text": "台灣植保部2025年Q1年終獎金實際與預算", "spans": [{"start": 5, "end": 12, "label": "TIME"}], "label_source": "weak_heuristic_v1"}
+{"id": "n0066", "text": "植保事業群各事業部去年上半年年終獎金", "spans": [{"start": 9, "end": 14, "label": "TIME"}], "label_source": "weak_heuristic_v1"}
+{"id": "n0094", "text": "台灣植保部２０２５年Ｑ１年終獎金,實際與預算", "spans": [{"start": 5, "end": 12, "label": "TIME"}], "label_source": "weak_heuristic_v1"}
+{"id": "p0035", "text": "台灣植保部2023年Q1各月年終獎金實際與預算", "spans": [{"start": 5, "end": 12, "label": "TIME"}], "label_source": "weak_heuristic_v1"}
+{"id": "p0017", "text": "植保事業群各事業部近半年年終獎金", "spans": [{"start": 9, "end": 12, "label": "TIME"}], "label_source": "weak_heuristic_v1"}
+{"id": "p0033", "text": "台灣植保部114年第一季年終獎金實際與預算", "spans": [{"start": 5, "end": 12, "label": "TIME"}], "label_source": "weak_heuristic_v1"}
+{"id": "n0079", "text": "植保事業群各事業部近三年第一季年終獎金", "spans": [{"start": 9, "end": 15, "label": "TIME"}], "label_source": "weak_heuristic_v1"}
+{"id": "n0060", "text": "植保事業群各事業部前年Q 1年終獎金", "spans": [{"start": 9, "end": 14, "label": "TIME"}], "label_source": "weak_heuristic_v1"}
+{"id": "x0119", "text": "台灣植保部民國 １１３ 年 前三季 與 １１２ 年 同期 年終獎金", "spans": [{"start": 5, "end": 17, "label": "TIME"}, {"start": 20, "end": 28, "label": "TIME"}], "label_source": "weak_heuristic_v1"}
+{"id": "n0097", "text": "台灣植保部１１4年Ｑ１各月年終獎金實際與預算", "spans": [{"start": 5, "end": 11, "label": "TIME"}], "label_source": "weak_heuristic_v1"}
+{"id": "p0031", "text": "植保事業群各事業部今年第一季與去年同期年終獎金", "spans": [{"start": 9, "end": 14, "label": "TIME"}, {"start": 15, "end": 19, "label": "TIME"}], "label_source": "weak_heuristic_v1"}
+{"id": "n0048", "text": "植保事業群各事業部２０２５ 年第一 季 年終獎金", "spans": [{"start": 9, "end": 19, "label": "TIME"}], "label_source": "weak_heuristic_v1"}
