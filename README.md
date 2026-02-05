@@ -20,8 +20,33 @@ OLLAMA_URL=http://<host>:11434/api/generate
 pip install -U -e .
 ```
 
+## Generate synthetic training data
+Generate synthetic zh_TW finance-style prompts with time span labels:
+```bash
+python scripts/generate_prompts.py --n 1000 --seed 40 --noise clean --profile broad --out artifacts/gen_broad.jsonl --with_spans
+```
+
+Options:
+- `--n`: Number of records to generate
+- `--seed`: Random seed for reproducibility
+- `--noise`: Noise level (`clean`, `mild`, `medium`, `heavy`) - simulates OCR errors
+- `--profile`: `pipeline` (DSL-compatible only) or `broad` (includes weeks/days/dates)
+- `--out`: Output JSONL file path
+- `--with_spans`: Include time span labels
+
+Validate generated spans:
+```bash
+python scripts/validate_spans_jsonl.py artifacts/gen_broad.jsonl
+python scripts/report_span_coverage.py artifacts/gen_broad.jsonl
+```
+
 ## Train extractor (Stage A)
-Split weak-labeled spans into train/dev:
+Split labeled spans into train/dev (use your labeled data or generated synthetic data):
+```bash
+python scripts/split_data.py --input artifacts/gen_broad.jsonl --train-out data/extractor_train.jsonl --dev-out data/extractor_dev.jsonl --dev-ratio 0.1
+```
+
+Or use existing labeled data:
 ```bash
 python scripts/split_data.py --input data/spans_labeled.jsonl --train-out data/extractor_train.jsonl --dev-out data/extractor_dev.jsonl --dev-ratio 0.1
 ```
@@ -53,9 +78,13 @@ python scripts/compare_eval_runs.py --names "lr5e-5" "lr3e-5+aug" "lr2e-5" artif
 Prints a table: Run, Precision, Recall, F1, TP, FP, FN, N, and the run with best F1.
 
 ## Data
-Expected JSONL formats live under `data/`:
-- `raw_prompts.jsonl`: `{id,text}`
-- `spans_labeled.jsonl`: `{id,text,spans:[{start,end,label:"TIME"}], ...}`
+Expected JSONL formats:
+- `raw_prompts.jsonl`: `{id,text}` (no labels)
+- `spans_labeled.jsonl`: `{id,text,spans:[{start,end,label:"TIME"}], ...}` (with time span labels)
+
+You can use either:
+- Manually labeled data in `data/spans_labeled.jsonl`
+- Synthetically generated data (see "Generate synthetic training data" above)
 
 ## Notes
 - Offsets in datasets and pipeline output are always **relative to the original raw prompt**.
