@@ -372,7 +372,129 @@ def ytd_qtd_mtd_expr(rng: random.Random) -> Tuple[str, Dict]:
 def compare_glue(rng: random.Random) -> str:
     return rng.choice(list(GLUE_WORDS))
 
-def make_time_parts(rng: random.Random, *, profile: str = "pipeline") -> List[str]:
+
+# ---------- DSL derivation (for normalizer training data) ----------
+
+def _year_to_dsl(ym: Dict) -> str:
+    """Convert year_expr / year_only / explicit_year meta to DSL YEAR= value."""
+    if ym["year_type"] == "ad":
+        return f"AD({ym['year']})"
+    if ym["year_type"] == "roc":
+        a = "true" if ym.get("assumed", False) else "false"
+        return f"ROC({ym['roc_year']}, assumed={a})"
+    if ym["year_type"] == "relative":
+        return f"REL({ym['rel']})"
+    raise ValueError(f"Unknown year_type: {ym.get('year_type')}")
+
+
+def _period_to_dsl(pm: Dict, intent: str) -> str:
+    """Convert period meta to DSL PERIOD= value."""
+    if intent == "year_only" or (intent == "year_only" and pm.get("period") == "year_only"):
+        return "YEAR"
+    period = pm.get("period")
+    if period == "quarter":
+        return f"Q{pm['q']}"
+    if period == "half":
+        return f"H{pm['h']}"
+    if period == "q1_q3":
+        return "Q1_Q3"
+    if period == "month":
+        return f"MONTH({pm['m']})"
+    if period == "month_range":
+        return f"MONTH_RANGE({pm['m1']}, {pm['m2']})"
+    if period == "rel_period":
+        return f"REL({pm['kind']})"
+    if period == "rolling":
+        u = pm["unit"]
+        n = pm["n"]
+        return f"ROLLING( {u} = {n} )"
+    if period in ("ytd", "qtd", "mtd", "htd"):
+        return period.upper()
+    if period == "week_rel":
+        # DSL has no week_rel; map to NEEDS_CLARIFICATION or skip. For pipeline profile we don't emit these.
+        return ""
+    if period == "rolling_weeks":
+        return ""  # not in schema
+    if period == "rolling_days":
+        return ""  # not in schema
+    if period == "date" or period == "date_range" or period == "month_boundary":
+        return ""  # not in schema
+    return ""
+
+
+def intent_to_dsl(meta: Dict, refdate: str) -> str:
+    """
+    Build a single-line DSL target string from generator part meta.
+    refdate is YYYY-MM-DD (used only if we ever resolve relative to concrete year).
+    Returns e.g. "T1: YEAR=AD(2024); PERIOD=Q1"
+    """
+    intent = meta.get("intent")
+    if not intent:
+        return "T1: FLAGS=NEEDS_CLARIFICATION"
+
+    parts: List[str] = []
+    year_val = None
+    period_val = None
+
+    if intent == "year_quarter":
+        year_val = _year_to_dsl(meta["year"])
+        period_val = _period_to_dsl(meta["period"], intent)
+    elif intent == "year_half":
+        year_val = _year_to_dsl(meta["year"])
+        period_val = _period_to_dsl(meta["period"], intent)
+    elif intent == "year_q1q3":
+        year_val = _year_to_dsl(meta["year"])
+        period_val = "Q1_Q3"
+    elif intent == "year_month_range":
+        year_val = _year_to_dsl(meta["year"])
+        period_val = _period_to_dsl(meta["period"], intent)
+    elif intent == "year_month":
+        year_val = _year_to_dsl(meta["year"])
+        period_val = _period_to_dsl(meta["period"], intent)
+    elif intent == "year_only":
+        year_val = _year_to_dsl(meta["year"])
+        period_val = "YEAR"
+    elif intent == "month_only":
+        period_val = _period_to_dsl(meta["period"], intent)
+        year_val = None  # month-only has no year in DSL? Schema allows missing year for some; require YEAR for non-ANCHOR. Use REL(this_year) as placeholder so resolver can bind.
+        # Actually schema says "Missing YEAR" error if not NEEDS_CLARIFICATION. So we need a year. Use REL(this_year) for "just month".
+        year_val = "REL(this_year)"
+    elif intent == "rel_period":
+        period_val = _period_to_dsl(meta["period"], intent)
+        year_val = "REL(this_year)"  # anchor to current year for rel period
+    elif intent == "rolling_only":
+        period_val = _period_to_dsl(meta["period"], intent)
+        year_val = "REL(this_year)"
+    elif intent == "ytdqtdmtd":
+        pm = meta.get("period") or {}
+        period_val = (pm.get("period") or "ytd").upper()  # ytd -> YTD etc
+        year_val = meta.get("year")
+        if year_val:
+            year_val = _year_to_dsl(year_val)
+        else:
+            year_val = "REL(this_year)"
+    elif intent == "compare_anchor":
+        # Right-hand side of compare_yoy: 去年同期 / 前年同期 / {YEAR}同期
+        year_rel = meta.get("year_rel")
+        if isinstance(year_rel, dict):
+            year_val = _year_to_dsl(year_rel)
+        else:
+            year_val = year_rel  # already "REL(same_period_last_year)" or "REL(two_years_ago)"
+        period_val = "ANCHOR"
+    elif intent == "compare_two":
+        # Each part is year_quarter
+        year_val = _year_to_dsl(meta["year"])
+        period_val = _period_to_dsl(meta["period"], "year_quarter")
+    else:
+        # week_rel, rolling_weeks, rolling_days, date, date_range, month_boundary: no DSL in schema
+        return "T1: FLAGS=NEEDS_CLARIFICATION"
+
+    if not year_val or not period_val:
+        return "T1: FLAGS=NEEDS_CLARIFICATION"
+    return f"T1: YEAR={year_val}; PERIOD={period_val}"
+
+
+def _make_time_parts_impl(rng: random.Random, *, profile: str = "pipeline") -> Tuple[List[str], List[Dict]]:
     if profile not in {"pipeline", "broad"}:
         raise ValueError(f"Unknown profile: {profile}")
 
@@ -424,85 +546,107 @@ def make_time_parts(rng: random.Random, *, profile: str = "pipeline") -> List[st
         )[0]
 
     if intent == "year_quarter":
-        y, _ = year_expr(rng); q, _ = quarter_expr(rng)
-        return [f"{y}{q}"]
+        y, ym = year_expr(rng); q, qm = quarter_expr(rng)
+        return [f"{y}{q}"], [{"intent": "year_quarter", "year": ym, "period": qm}]
     if intent == "year_half":
-        y, _ = year_expr(rng); h, _ = half_expr(rng)
-        return [f"{y}{h}"]
+        y, ym = year_expr(rng); h, hm = half_expr(rng)
+        return [f"{y}{h}"], [{"intent": "year_half", "year": ym, "period": hm}]
     if intent == "year_q1q3":
-        y, _ = year_expr(rng); p, _ = q1_q3_expr(rng)
+        y, ym = year_expr(rng); p, _ = q1_q3_expr(rng)
+        qm = {"period": "q1_q3"}
         if p.startswith(("截至", "截止")):
-            # Prefer "截至{YEAR}Q3" over "{YEAR}截至Q3"
-            return [f"{p[:2]}{y}{p[2:]}"]
-        return [f"{y}{p}"]
+            return [f"{p[:2]}{y}{p[2:]}"], [{"intent": "year_q1q3", "year": ym, "period": qm}]
+        return [f"{y}{p}"], [{"intent": "year_q1q3", "year": ym, "period": qm}]
     if intent == "year_month_range":
-        y, _ = year_expr(rng)
+        y, ym = year_expr(rng)
         m_surface, m_meta = month_range_expr(rng)
-        # Add common range framing ("自/從...起...至...") sometimes.
         if rng.random() < 0.22:
             prefix = rng.choice(["自", "從", "从"])
             sep = rng.choice(["到", "至"])
             m1 = m_meta["m1"]
             m2 = m_meta["m2"]
             if rng.random() < 0.45:
-                return [f"{prefix}{y}{m1}月起{sep}{m2}月"]
-            return [f"{prefix}{y}{m1}月{sep}{m2}月"]
-        return [f"{y}{m_surface}"]
+                return [f"{prefix}{y}{m1}月起{sep}{m2}月"], [{"intent": "year_month_range", "year": ym, "period": m_meta}]
+            return [f"{prefix}{y}{m1}月{sep}{m2}月"], [{"intent": "year_month_range", "year": ym, "period": m_meta}]
+        return [f"{y}{m_surface}"], [{"intent": "year_month_range", "year": ym, "period": m_meta}]
     if intent == "year_month":
-        y, _ = year_expr(rng); m, _ = month_expr(rng)
-        return [f"{y}{m}"]
+        y, ym = year_expr(rng); m, mm = month_expr(rng)
+        return [f"{y}{m}"], [{"intent": "year_month", "year": ym, "period": mm}]
     if intent == "year_only":
-        y, _ = year_only_expr(rng)
-        return [y]
+        y, ym = year_only_expr(rng)
+        return [y], [{"intent": "year_only", "year": ym}]
     if intent == "month_only":
-        m, _ = month_expr(rng)
-        return [m]
+        m, mm = month_expr(rng)
+        return [m], [{"intent": "month_only", "period": mm}]
     if intent == "rel_period":
-        p, _ = rel_period_expr(rng)
-        return [p]
+        p, pm = rel_period_expr(rng)
+        return [p], [{"intent": "rel_period", "period": pm}]
     if intent == "rolling_only":
-        r, _ = rolling_expr(rng)
-        return [r]
+        r, rm = rolling_expr(rng)
+        return [r], [{"intent": "rolling_only", "period": rm}]
     if intent == "ytdqtdmtd":
-        t, _ = ytd_qtd_mtd_expr(rng)
+        t, tm = ytd_qtd_mtd_expr(rng)
         if rng.random() < 0.45:
-            y, _ = year_expr(rng)
-            return [f"{y}{t}"]
-        return [t]
+            y, ym = year_expr(rng)
+            return [f"{y}{t}"], [{"intent": "ytdqtdmtd", "period": tm, "year": ym}]
+        return [t], [{"intent": "ytdqtdmtd", "period": tm}]
     if intent == "compare_yoy":
-        # anchor + last-year same period
-        left = make_time_parts(rng, profile=profile)[0]
+        left_parts, left_metas = _make_time_parts_impl(rng, profile=profile)
+        left = left_parts[0]
         glue = compare_glue(rng)
-        right = rng.choice(["去年同期", "前年同期", "上年同期", "去年 同期"])
+        right_choice = rng.choice(["去年同期", "前年同期", "上年同期", "去年 同期"])
         if rng.random() < 0.35:
-            y, _ = explicit_year_expr(rng)
+            y, ym = explicit_year_expr(rng)
             right = f"{y}同期"
-        return [left, glue, right]
+            right_meta: Dict = {"intent": "compare_anchor", "year_rel": ym}
+        else:
+            right = right_choice
+            if "去年" in right or "上年" in right:
+                right_meta = {"intent": "compare_anchor", "year_rel": "REL(same_period_last_year)"}
+            else:
+                right_meta = {"intent": "compare_anchor", "year_rel": "REL(two_years_ago)"}
+        return [left, glue, right], [left_metas[0], None, right_meta]
     if intent == "compare_two":
-        left = f"{year_expr(rng)[0]}{quarter_expr(rng)[0]}"
-        right = f"{year_expr(rng)[0]}{quarter_expr(rng)[0]}"
+        y1, ym1 = year_expr(rng); q1, qm1 = quarter_expr(rng)
+        y2, ym2 = year_expr(rng); q2, qm2 = quarter_expr(rng)
+        left = f"{y1}{q1}"
+        right = f"{y2}{q2}"
         glue = compare_glue(rng)
-        return [left, glue, right]
+        return [left, glue, right], [
+            {"intent": "compare_two", "year": ym1, "period": qm1},
+            None,
+            {"intent": "compare_two", "year": ym2, "period": qm2},
+        ]
 
     if intent == "week_rel":
         w, _ = week_rel_expr(rng)
-        return [w]
+        return [w], [{"intent": "week_rel"}]
     if intent == "rolling_weeks":
         w, _ = rolling_weeks_expr(rng)
-        return [w]
+        return [w], [{"intent": "rolling_weeks"}]
     if intent == "rolling_days":
         d, _ = rolling_days_expr(rng)
-        return [d]
+        return [d], [{"intent": "rolling_days"}]
     if intent == "date":
         d, _ = date_expr(rng)
-        return [d]
+        return [d], [{"intent": "date"}]
     if intent == "date_range":
         d, _ = date_range_expr(rng)
-        return [d]
+        return [d], [{"intent": "date_range"}]
     if intent == "month_boundary":
         b, _ = month_boundary_expr(rng)
-        return [b]
+        return [b], [{"intent": "month_boundary"}]
     raise RuntimeError("unknown intent")
+
+
+def make_time_parts_with_meta(rng: random.Random, *, profile: str = "pipeline") -> Tuple[List[str], List[Dict]]:
+    """Return (parts, part_metas). part_metas[i] is None for glue words."""
+    return _make_time_parts_impl(rng, profile=profile)
+
+
+def make_time_parts(rng: random.Random, *, profile: str = "pipeline") -> List[str]:
+    parts, _ = make_time_parts_with_meta(rng, profile=profile)
+    return parts
 
 DEPTS = ["植保事業群各事業部","台灣植保部","植保事業群","植保事業部","植保事業群-台灣區","台灣區植保事業群"]
 MEASURES = ["年終獎金","獎金","薪資","營收","毛利","費用"]
@@ -647,7 +791,7 @@ def assemble(rng: random.Random, *, profile: str = "pipeline") -> Tuple[str, Lis
     measure = rng.choice(MEASURES)
     qual = rng.choice(QUALIFIERS)
     verb = rng.choice(VERBS)
-    parts = make_time_parts(rng, profile=profile)
+    parts, part_metas = make_time_parts_with_meta(rng, profile=profile)
 
     # join the time surface form
     time_text = "".join(parts)
@@ -696,7 +840,14 @@ def assemble(rng: random.Random, *, profile: str = "pipeline") -> Tuple[str, Lis
     all_spans = spans + additional_spans
     merged_spans = _merge_spans(all_spans)
 
-    meta = {"dept":dept, "measure":measure, "qual":qual.strip(), "time_text":time_text, "time_parts":parts}
+    meta = {
+        "dept": dept,
+        "measure": measure,
+        "qual": qual.strip(),
+        "time_text": time_text,
+        "time_parts": parts,
+        "part_metas": part_metas,
+    }
     return text, merged_spans, meta
 
 def apply_noise(rng: random.Random, text: str, level: str) -> Tuple[str, List[int], List[int], Dict]:
@@ -764,10 +915,20 @@ def apply_noise(rng: random.Random, text: str, level: str) -> Tuple[str, List[in
 
     return noisy, pos_start, pos_end, {"level": level, "ops": ops}
 
-def generate_records(n: int, seed: int, noise: str, with_spans: bool, *, profile: str = "pipeline") -> List[Dict]:
+def generate_records(
+    n: int,
+    seed: int,
+    noise: str,
+    with_spans: bool,
+    *,
+    profile: str = "pipeline",
+    refdate: str = "2025-02-05",
+    out_normalizer: str | None = None,
+) -> List[Dict]:
     rng = random.Random(seed)
     recs = []
-    for i in range(1, n+1):
+    normalizer_lines: List[Dict] = []
+    for i in range(1, n + 1):
         base_text, base_spans, meta = assemble(rng, profile=profile)
         noisy_text, pos_start, pos_end, noise_meta = apply_noise(rng, base_text, noise)
 
@@ -776,8 +937,23 @@ def generate_records(n: int, seed: int, noise: str, with_spans: bool, *, profile
             rec["spans"] = [
                 {"start": pos_start[a], "end": pos_end[b], "label": "TIME"} for a, b in base_spans
             ]
-            # rec["meta"] = {"noise": noise_meta, "base_text": base_text, "base_spans": base_spans, **meta}
         recs.append(rec)
+
+        # Emit normalizer training rows from clean time parts + part_metas (one row per span with valid DSL)
+        if out_normalizer is not None:
+            parts = meta.get("time_parts", [])
+            part_metas = meta.get("part_metas", [])
+            for j, part in enumerate(parts):
+                if j >= len(part_metas) or part_metas[j] is None:
+                    continue
+                dsl = intent_to_dsl(part_metas[j], refdate)
+                if "NEEDS_CLARIFICATION" in dsl:
+                    continue
+                normalizer_lines.append({"span": part, "refdate": refdate, "target": dsl})
+    if out_normalizer is not None:
+        with open(out_normalizer, "w", encoding="utf-8") as f:
+            for row in normalizer_lines:
+                f.write(json.dumps(row, ensure_ascii=False) + "\n")
     return recs
 
 def main():
@@ -794,13 +970,39 @@ def main():
         help="Pattern coverage profile. 'pipeline' stays within current DSL/resolver scope; "
         "'broad' adds week/day/date-like spans (useful for extractor robustness).",
     )
+    ap.add_argument(
+        "--out_normalizer",
+        type=str,
+        default=None,
+        metavar="PATH",
+        help="If set, write normalizer training JSONL (span, refdate, target) from generator metadata.",
+    )
+    ap.add_argument(
+        "--refdate",
+        type=str,
+        default="2025-02-05",
+        metavar="YYYY-MM-DD",
+        help="Reference date for normalizer targets (used with --out_normalizer).",
+    )
     args = ap.parse_args()
 
-    recs = generate_records(args.n, args.seed, args.noise, args.with_spans, profile=args.profile)
+    recs = generate_records(
+        args.n,
+        args.seed,
+        args.noise,
+        args.with_spans,
+        profile=args.profile,
+        refdate=args.refdate,
+        out_normalizer=args.out_normalizer,
+    )
     with open(args.out, "w", encoding="utf-8") as f:
         for r in recs:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
     print(f"Wrote {len(recs)} records to {args.out}")
+    if args.out_normalizer:
+        with open(args.out_normalizer, "r", encoding="utf-8") as f:
+            n_norm = sum(1 for _ in f)
+        print(f"Wrote {n_norm} normalizer training rows to {args.out_normalizer}")
 
 if __name__ == "__main__":
     main()

@@ -2,9 +2,10 @@ from __future__ import annotations
 
 from datetime import date
 import re
-from typing import Callable
+from typing import Callable, Optional
 
 from roc_time_parser.config import Settings
+from roc_time_parser.normalizer.dataset import make_input
 from roc_time_parser.normalizer.ollama_client import query_ollama
 from roc_time_parser.preprocess import preprocess
 from roc_time_parser.schema import parse_dsl
@@ -88,12 +89,54 @@ def _clean_model_output(s: str) -> str:
     return line
 
 
+def _normalize_span_seq2seq(
+    span_text: str,
+    *,
+    refdate: date,
+    model,
+    tokenizer,
+    max_new_tokens: int = 64,
+    num_beams: int = 4,
+) -> tuple[str, float]:
+    span = preprocess(span_text, mode="compact")
+    input_text = make_input(span, refdate.isoformat())
+
+    inputs = tokenizer(
+        input_text,
+        return_tensors="pt",
+        truncation=True,
+        max_length=128,
+    )
+    inputs = {k: v.to(model.device) for k, v in inputs.items()}
+
+    output_ids = model.generate(
+        **inputs,
+        max_new_tokens=max_new_tokens,
+        num_beams=num_beams,
+        do_sample=False,
+        temperature=0.0,
+    )
+    dsl = tokenizer.decode(output_ids[0], skip_special_tokens=True).strip()
+
+    try:
+        spec = parse_dsl(dsl)
+        if "NEEDS_CLARIFICATION" in spec.flags:
+            return dsl, 0.0
+        if "NEEDS_ANCHOR" in spec.flags:
+            return dsl, 0.5
+        return dsl, 0.9
+    except Exception:
+        return "T1: FLAGS=NEEDS_CLARIFICATION", 0.0
+
+
 def normalize_span(
     span_text: str,
     *,
     refdate: date,
-    settings: Settings,
+    settings: Optional[Settings] = None,
     query_fn: Callable[..., object] = query_ollama,
+    normalizer_model=None,
+    normalizer_tokenizer=None,
 ) -> tuple[str, float]:
     """
     Normalize a span into DSL_TIME_V1.
@@ -106,6 +149,18 @@ def normalize_span(
         year_expr = _year_from_span_for_anchor(span)
         dsl = f"T1: YEAR={year_expr}; PERIOD=ANCHOR; FLAGS=NEEDS_ANCHOR"
         return dsl, 0.6
+
+    # If seq2seq model provided, use it.
+    if normalizer_model is not None and normalizer_tokenizer is not None:
+        return _normalize_span_seq2seq(
+            span_text,
+            refdate=refdate,
+            model=normalizer_model,
+            tokenizer=normalizer_tokenizer,
+        )
+
+    if settings is None:
+        raise ValueError("settings is required when using Ollama normalizer")
 
     prompt = _build_prompt(span, refdate)
 

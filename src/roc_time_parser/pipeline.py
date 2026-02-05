@@ -13,7 +13,9 @@ from roc_time_parser.schema import PeriodAnchor, ValidatedSpec, parse_dsl, to_js
 class Models:
     extractor_model: Any
     extractor_tokenizer: Any
-    normalizer_settings: Any  # roc_time_parser.config.Settings
+    normalizer_settings: Any  # roc_time_parser.config.Settings (for Ollama)
+    normalizer_model: Any | None = None
+    normalizer_tokenizer: Any | None = None
 
 
 def _range_to_json(r: ResolvedRange) -> dict[str, Any]:
@@ -97,7 +99,13 @@ def parse_prompt(
 
     for sp in spans:
         span_warnings: list[str] = []
-        dsl, conf = normalize_span(sp.text, refdate=refdate, settings=models.normalizer_settings)
+        dsl, conf = normalize_span(
+            sp.text,
+            refdate=refdate,
+            settings=models.normalizer_settings,
+            normalizer_model=models.normalizer_model,
+            normalizer_tokenizer=models.normalizer_tokenizer,
+        )
 
         spec: Optional[ValidatedSpec] = None
         spec_json: Optional[dict[str, Any]] = None

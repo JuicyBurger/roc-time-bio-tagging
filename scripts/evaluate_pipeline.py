@@ -69,6 +69,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--stage", choices=["a", "b", "e2e", "all"], default="all")
     ap.add_argument("--threshold", type=float, default=0.5, help="Extractor threshold.")
     ap.add_argument("--extractor-dir", default=None, help="Trained extractor model directory (default: EXTRACTOR_MODEL_DIR or artifacts/extractor_runA, artifacts/extractor).")
+    ap.add_argument("--normalizer-dir", default=None, help="Seq2seq normalizer model directory.")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--out", default="artifacts/eval_results.jsonl")
     args = ap.parse_args(argv)
@@ -100,16 +101,29 @@ def main(argv: list[str] | None = None) -> int:
                 return 2
 
     settings = None
+    normalizer_model = None
+    normalizer_tokenizer = None
     if do_b or do_e2e:
-        try:
-            from roc_time_parser.config import load_settings
+        if args.normalizer_dir:
+            try:
+                from roc_time_parser.normalizer.model import load_normalizer
 
-            settings = load_settings()
-        except Exception as e:  # noqa: BLE001
-            print(f"[warn] normalizer settings not available: {e}")
-            settings = None
-            if args.stage == "b":
-                return 2
+                normalizer_model, normalizer_tokenizer = load_normalizer(model_dir=args.normalizer_dir)
+            except Exception as e:  # noqa: BLE001
+                print(f"[warn] normalizer model not available: {e}")
+                normalizer_model, normalizer_tokenizer = None, None
+                if args.stage == "b":
+                    return 2
+        else:
+            try:
+                from roc_time_parser.config import load_settings
+
+                settings = load_settings()
+            except Exception as e:  # noqa: BLE001
+                print(f"[warn] normalizer settings not available: {e}")
+                settings = None
+                if args.stage == "b":
+                    return 2
 
     # Stage A metrics accumulator
     a_tp = a_fp = a_fn = 0
@@ -160,14 +174,20 @@ def main(argv: list[str] | None = None) -> int:
             row_out["stage_a"] = {"precision": prf.precision, "recall": prf.recall, "f1": prf.f1}
 
         # Stage B evaluation (using gold spans)
-        if do_b and settings is not None:
+        if do_b and (settings is not None or normalizer_model is not None):
             from roc_time_parser.normalizer.infer import normalize_span
             from roc_time_parser.schema import parse_dsl
 
             b_rows: list[dict[str, Any]] = []
             for (s0, s1) in gold_spans:
                 span_text = text[s0:s1]
-                dsl, conf = normalize_span(span_text, refdate=ref, settings=settings)
+                dsl, conf = normalize_span(
+                    span_text,
+                    refdate=ref,
+                    settings=settings,
+                    normalizer_model=normalizer_model,
+                    normalizer_tokenizer=normalizer_tokenizer,
+                )
                 spec = parse_dsl(dsl)
                 flags = set(spec.flags)
                 b_total += 1
@@ -179,7 +199,7 @@ def main(argv: list[str] | None = None) -> int:
             row_out["stage_b"] = b_rows
 
         # End-to-end evaluation (smoke)
-        if do_e2e and extractor is not None and tokenizer is not None and settings is not None:
+        if do_e2e and extractor is not None and tokenizer is not None and (settings is not None or normalizer_model is not None):
             from roc_time_parser.pipeline import Models, parse_prompt
             from roc_time_parser.policy import Policy
 
@@ -187,7 +207,13 @@ def main(argv: list[str] | None = None) -> int:
             out = parse_prompt(
                 text,
                 refdate=ref,
-                models=Models(extractor_model=extractor, extractor_tokenizer=tokenizer, normalizer_settings=settings),
+                models=Models(
+                    extractor_model=extractor,
+                    extractor_tokenizer=tokenizer,
+                    normalizer_settings=settings,
+                    normalizer_model=normalizer_model,
+                    normalizer_tokenizer=normalizer_tokenizer,
+                ),
                 policy=Policy(),
                 extractor_threshold=args.threshold,
             )

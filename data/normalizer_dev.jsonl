@@ -1,0 +1,570 @@
+{"span": "113年1月份", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=true); PERIOD=MONTH(1)"}
+{"span": "2019年下半年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=H2"}
+{"span": "116年第 1 季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(116, assumed=true); PERIOD=Q1"}
+{"span": "過去12個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 12 )"}
+{"span": "民国110年上 半年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=false); PERIOD=H1"}
+{"span": "這個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_month)"}
+{"span": "2019年6－7月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=MONTH_RANGE(6, 7)"}
+{"span": "最近2年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 2 )"}
+{"span": "民国111年第 4 季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(111, assumed=false); PERIOD=Q4"}
+{"span": "2025年10 月份", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=MONTH(10)"}
+{"span": "2023年第 3 季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=Q3"}
+{"span": "2027年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=YEAR"}
+{"span": "最近3個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 3 )"}
+{"span": "11月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(11)"}
+{"span": "2020年第二季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=Q2"}
+{"span": "112年上 半年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(112, assumed=true); PERIOD=H1"}
+{"span": "2019年6 月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=MONTH(6)"}
+{"span": "截至民国115年第3季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=false); PERIOD=Q1_Q3"}
+{"span": "本季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_quarter)"}
+{"span": "最近2季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( quarters = 2 )"}
+{"span": "2月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(2)"}
+{"span": "最近2季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( quarters = 2 )"}
+{"span": "民国110年同期", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=false); PERIOD=ANCHOR"}
+{"span": "2024年下 半年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=H2"}
+{"span": "2026年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=YEAR"}
+{"span": "民国112年第4 季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(112, assumed=false); PERIOD=Q4"}
+{"span": "前年9～12月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=MONTH_RANGE(9, 12)"}
+{"span": "西元2021年Ｑ4", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=Q4"}
+{"span": "自2024年8月起到10月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=MONTH_RANGE(8, 10)"}
+{"span": "自上年度1月起至2月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=MONTH_RANGE(1, 2)"}
+{"span": "2019年第4 季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=Q4"}
+{"span": "上年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "下季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_quarter)"}
+{"span": "2027年上半年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=H1"}
+{"span": "2月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(2)"}
+{"span": "115年第2季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=true); PERIOD=Q2"}
+{"span": "民国115年10 月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=false); PERIOD=MONTH(10)"}
+{"span": "民國113年年初到目前为止", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=false); PERIOD=YTD"}
+{"span": "本月至今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MTD"}
+{"span": "5月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(5)"}
+{"span": "当年上半年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=H1"}
+{"span": "2027年H1", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=H1"}
+{"span": "上年度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=YEAR"}
+{"span": "去年Ｈ1", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=H1"}
+{"span": "2026年2–3月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=MONTH_RANGE(2, 3)"}
+{"span": "过去9个月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 9 )"}
+{"span": "10月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(10)"}
+{"span": "該年第四季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q4"}
+{"span": "民國116年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(116, assumed=false); PERIOD=YEAR"}
+{"span": "本季至今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=QTD"}
+{"span": "民国112年第一季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(112, assumed=false); PERIOD=Q1"}
+{"span": "2025年第四季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=Q4"}
+{"span": "前5年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 5 )"}
+{"span": "上个月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_month)"}
+{"span": "2019年上半年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=H1"}
+{"span": "本季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_quarter)"}
+{"span": "前年Ｑ2", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=Q2"}
+{"span": "去年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "過去1年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 1 )"}
+{"span": "前年上半年度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=H1"}
+{"span": "截止112年Ｑ3", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(112, assumed=true); PERIOD=Q1_Q3"}
+{"span": "2025年第二季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=Q2"}
+{"span": "近3月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 3 )"}
+{"span": "2027年第一季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=Q1"}
+{"span": "近2季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( quarters = 2 )"}
+{"span": "去年 同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "2023年第2季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=Q2"}
+{"span": "民國112年第3季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(112, assumed=false); PERIOD=Q3"}
+{"span": "该年年初至今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=YTD"}
+{"span": "MTD", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MTD"}
+{"span": "2023年第4季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=Q4"}
+{"span": "最近2年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 2 )"}
+{"span": "當年度2月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(2)"}
+{"span": "前年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=ANCHOR"}
+{"span": "截止西元2021年Ｑ3", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=Q1_Q3"}
+{"span": "下季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_quarter)"}
+{"span": "截至2024年Q3", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=Q1_Q3"}
+{"span": "2020年3月份", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=MONTH(3)"}
+{"span": "2024年Q2", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=Q2"}
+{"span": "本月至今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MTD"}
+{"span": "当年度第1季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q1"}
+{"span": "去年 同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "公元2023年第3季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=Q3"}
+{"span": "截至2021年第三季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=Q1_Q3"}
+{"span": "西元2026年同期", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=ANCHOR"}
+{"span": "本季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_quarter)"}
+{"span": "2022年同期", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=ANCHOR"}
+{"span": "民国109年年初到目前為止", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(109, assumed=false); PERIOD=YTD"}
+{"span": "上季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_quarter)"}
+{"span": "2024年12月份", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=MONTH(12)"}
+{"span": "当月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_month)"}
+{"span": "明年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(next_year); PERIOD=YEAR"}
+{"span": "前1年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 1 )"}
+{"span": "3 月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(3)"}
+{"span": "民國114年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=YEAR"}
+{"span": "115年8—8月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=true); PERIOD=MONTH_RANGE(8, 8)"}
+{"span": "上年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "上个月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_month)"}
+{"span": "下季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_quarter)"}
+{"span": "從2023年7月起到8月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=MONTH_RANGE(7, 8)"}
+{"span": "截至2020年3Q", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=Q1_Q3"}
+{"span": "近12个月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 12 )"}
+{"span": "近5年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 5 )"}
+{"span": "过去8季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( quarters = 8 )"}
+{"span": "民国114年Ｑ1－Ｑ3", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=Q1_Q3"}
+{"span": "去年下 半年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=H2"}
+{"span": "2023年第四季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=Q4"}
+{"span": "民国110年第3 季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=false); PERIOD=Q3"}
+{"span": "2027年第4季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=Q4"}
+{"span": "去年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "2025年第2 季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=Q2"}
+{"span": "近2個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 2 )"}
+{"span": "下季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_quarter)"}
+{"span": "近3個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 3 )"}
+{"span": "西元2019年第三季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=Q3"}
+{"span": "过去6个月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 6 )"}
+{"span": "2020年第4 季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=Q4"}
+{"span": "2024年第一季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=Q1"}
+{"span": "截至民国114年第三季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=Q1_Q3"}
+{"span": "近1个月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 1 )"}
+{"span": "该年Ｑ3", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q3"}
+{"span": "2027年第二季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=Q2"}
+{"span": "民国110年同期", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=false); PERIOD=ANCHOR"}
+{"span": "2023年Q1-Q3", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=Q1_Q3"}
+{"span": "2026年第2 季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=Q2"}
+{"span": "2020年Q1", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=Q1"}
+{"span": "民国112年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(112, assumed=false); PERIOD=YEAR"}
+{"span": "当年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=YEAR"}
+{"span": "去年12 月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=MONTH(12)"}
+{"span": "2024年第4 季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=Q4"}
+{"span": "去年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=YEAR"}
+{"span": "年初至今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=YTD"}
+{"span": "下季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_quarter)"}
+{"span": "民國109年Q1~Q3", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(109, assumed=false); PERIOD=Q1_Q3"}
+{"span": "下季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_quarter)"}
+{"span": "上月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_month)"}
+{"span": "民国113年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=false); PERIOD=YEAR"}
+{"span": "這個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_month)"}
+{"span": "西元2019年Q2", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=Q2"}
+{"span": "下季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_quarter)"}
+{"span": "109年第2季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(109, assumed=true); PERIOD=Q2"}
+{"span": "2020年上半年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=H1"}
+{"span": "过去6季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( quarters = 6 )"}
+{"span": "本季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_quarter)"}
+{"span": "2019年第3 季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=Q3"}
+{"span": "去年 同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "民國113年Q1–Q3", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=false); PERIOD=Q1_Q3"}
+{"span": "民國111年第一季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(111, assumed=false); PERIOD=Q1"}
+{"span": "2025年第四季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=Q4"}
+{"span": "前5年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 5 )"}
+{"span": "2024年第一季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=Q1"}
+{"span": "民國109年Ｈ2", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(109, assumed=false); PERIOD=H2"}
+{"span": "西元2020年Ｑ1", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=Q1"}
+{"span": "民國111年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(111, assumed=false); PERIOD=YEAR"}
+{"span": "去年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "民國109年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(109, assumed=false); PERIOD=YEAR"}
+{"span": "民国113年3Q", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=false); PERIOD=Q3"}
+{"span": "過去9個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 9 )"}
+{"span": "民国112年Q3", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(112, assumed=false); PERIOD=Q3"}
+{"span": "2022年第三季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=Q3"}
+{"span": "113年2—5 月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=true); PERIOD=MONTH_RANGE(2, 5)"}
+{"span": "上年度前三季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=Q1_Q3"}
+{"span": "110年Ｈ1", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=true); PERIOD=H1"}
+{"span": "民国113年半年度至今", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=false); PERIOD=HTD"}
+{"span": "前年第 3 季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=Q3"}
+{"span": "民國113年第1 季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=false); PERIOD=Q1"}
+{"span": "2020年MTD", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=MTD"}
+{"span": "2023年半年度迄今", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=HTD"}
+{"span": "过去4年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 4 )"}
+{"span": "2022年Q1~Q3", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=Q1_Q3"}
+{"span": "2025年上 半年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=H1"}
+{"span": "明年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(next_year); PERIOD=YEAR"}
+{"span": "民国109年9月份", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(109, assumed=false); PERIOD=MONTH(9)"}
+{"span": "113年HTD", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=true); PERIOD=HTD"}
+{"span": "西元2022年4Q", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=Q4"}
+{"span": "2025年年初到目前为止", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=YTD"}
+{"span": "上個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_month)"}
+{"span": "2023年Ｈ1", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=H1"}
+{"span": "西元2024年第1季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=Q1"}
+{"span": "2022年第四季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=Q4"}
+{"span": "2022年第四季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=Q4"}
+{"span": "半年度至今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=HTD"}
+{"span": "108年第二季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(108, assumed=true); PERIOD=Q2"}
+{"span": "上年度5 月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=MONTH(5)"}
+{"span": "民國108年第二季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(108, assumed=false); PERIOD=Q2"}
+{"span": "当年度第 2 季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q2"}
+{"span": "5月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(5)"}
+{"span": "上月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_month)"}
+{"span": "2019年1 月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=MONTH(1)"}
+{"span": "上月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_month)"}
+{"span": "民国109年度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(109, assumed=false); PERIOD=YEAR"}
+{"span": "2023年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=YEAR"}
+{"span": "近兩年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 2 )"}
+{"span": "2024年同期", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=ANCHOR"}
+{"span": "近3季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( quarters = 3 )"}
+{"span": "2021年6 月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=MONTH(6)"}
+{"span": "5月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(5)"}
+{"span": "前年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=YEAR"}
+{"span": "今年4 月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(4)"}
+{"span": "上年度第一季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=Q1"}
+{"span": "民国115年第四季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=false); PERIOD=Q4"}
+{"span": "2021年下 半年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=H2"}
+{"span": "9 月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(9)"}
+{"span": "110年8－8月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=true); PERIOD=MONTH_RANGE(8, 8)"}
+{"span": "下个月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_month)"}
+{"span": "2026年8 月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=MONTH(8)"}
+{"span": "前年Ｑ3", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=Q3"}
+{"span": "西元2026年第 4 季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=Q4"}
+{"span": "过去3年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 3 )"}
+{"span": "上年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "公元2027年上半年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=H1"}
+{"span": "2027年第一季至第三季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=Q1_Q3"}
+{"span": "民國114年下 半年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=H2"}
+{"span": "8月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(8)"}
+{"span": "截止當年度第三季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q1_Q3"}
+{"span": "公元2020年上半年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=H1"}
+{"span": "当年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=YEAR"}
+{"span": "民国111年5月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(111, assumed=false); PERIOD=MONTH(5)"}
+{"span": "2019年第二季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=Q2"}
+{"span": "115年10 月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=true); PERIOD=MONTH(10)"}
+{"span": "2025年YTD", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=YTD"}
+{"span": "去年 同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "2026年9月份", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=MONTH(9)"}
+{"span": "上年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "明年第1季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(next_year); PERIOD=Q1"}
+{"span": "明年第一季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(next_year); PERIOD=Q1"}
+{"span": "年初到目前为止", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=YTD"}
+{"span": "前年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=ANCHOR"}
+{"span": "该年第二季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q2"}
+{"span": "2026年半年度迄今", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=HTD"}
+{"span": "前年2月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=MONTH(2)"}
+{"span": "2026年2Q", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=Q2"}
+{"span": "前年1月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=MONTH(1)"}
+{"span": "2027年下 半年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=H2"}
+{"span": "110年第一季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=true); PERIOD=Q1"}
+{"span": "前年3－3月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=MONTH_RANGE(3, 3)"}
+{"span": "去年第三季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=Q3"}
+{"span": "108年第1季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(108, assumed=true); PERIOD=Q1"}
+{"span": "去年 同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "9月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(9)"}
+{"span": "2022年年初到目前為止", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=YTD"}
+{"span": "2021年8月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=MONTH(8)"}
+{"span": "2025年同期", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=ANCHOR"}
+{"span": "民国112年4Q", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(112, assumed=false); PERIOD=Q4"}
+{"span": "从2027年3月起到5月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=MONTH_RANGE(3, 5)"}
+{"span": "截至前年Ｑ3", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=Q1_Q3"}
+{"span": "本月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_month)"}
+{"span": "109年Q1－Q3", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(109, assumed=true); PERIOD=Q1_Q3"}
+{"span": "西元2021年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=YEAR"}
+{"span": "108年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(108, assumed=true); PERIOD=YEAR"}
+{"span": "上季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_quarter)"}
+{"span": "本季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_quarter)"}
+{"span": "2025年本季至今", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=QTD"}
+{"span": "前年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=ANCHOR"}
+{"span": "2019年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=YEAR"}
+{"span": "112年第 3 季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(112, assumed=true); PERIOD=Q3"}
+{"span": "前年前3季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=Q1_Q3"}
+{"span": "本季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_quarter)"}
+{"span": "2021年11 月份", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=MONTH(11)"}
+{"span": "2022年前3季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=Q1_Q3"}
+{"span": "2027年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=YEAR"}
+{"span": "民国110年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=false); PERIOD=YEAR"}
+{"span": "2021年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=YEAR"}
+{"span": "2027年第 1 季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=Q1"}
+{"span": "上季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_quarter)"}
+{"span": "截至前年第3季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=Q1_Q3"}
+{"span": "西元2022年同期", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=ANCHOR"}
+{"span": "2026年本季至今", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=QTD"}
+{"span": "前年Q1", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=Q1"}
+{"span": "115年第3 季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=true); PERIOD=Q3"}
+{"span": "前年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=ANCHOR"}
+{"span": "最近6個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 6 )"}
+{"span": "截至公元2025年第3季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=Q1_Q3"}
+{"span": "2027年2Q", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=Q2"}
+{"span": "上年度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=YEAR"}
+{"span": "公元2025年第4 季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=Q4"}
+{"span": "民國114年第三季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=Q3"}
+{"span": "截止西元2021年第三季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=Q1_Q3"}
+{"span": "115年4 月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=true); PERIOD=MONTH(4)"}
+{"span": "民国116年前3季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(116, assumed=false); PERIOD=Q1_Q3"}
+{"span": "2025年11~12月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=MONTH_RANGE(11, 12)"}
+{"span": "2019年Ｑ1－Ｑ3", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=Q1_Q3"}
+{"span": "半年度迄今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=HTD"}
+{"span": "本年第2 季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q2"}
+{"span": "前三年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 3 )"}
+{"span": "12月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(12)"}
+{"span": "2 月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(2)"}
+{"span": "从民国113年2月至2月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=false); PERIOD=MONTH_RANGE(2, 2)"}
+{"span": "2023年上 半年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=H1"}
+{"span": "2025年第一季至第三季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=Q1_Q3"}
+{"span": "2021年下半年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=H2"}
+{"span": "本月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_month)"}
+{"span": "下個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_month)"}
+{"span": "民国115年第 4 季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=false); PERIOD=Q4"}
+{"span": "半年度迄今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=HTD"}
+{"span": "2023年同期", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=ANCHOR"}
+{"span": "2020年前三季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=Q1_Q3"}
+{"span": "民國115年同期", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=false); PERIOD=ANCHOR"}
+{"span": "本年度Q1－Q3", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q1_Q3"}
+{"span": "111年Q3", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(111, assumed=true); PERIOD=Q3"}
+{"span": "民國113年下半年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=false); PERIOD=H2"}
+{"span": "西元2020年第三季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=Q3"}
+{"span": "112年年初到目前為止", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(112, assumed=true); PERIOD=YTD"}
+{"span": "从2023年7月起到7月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=MONTH_RANGE(7, 7)"}
+{"span": "去年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "西元2019年第3 季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=Q3"}
+{"span": "明年第2季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(next_year); PERIOD=Q2"}
+{"span": "民国115年下 半年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=false); PERIOD=H2"}
+{"span": "本季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_quarter)"}
+{"span": "公元2023年下半年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=H2"}
+{"span": "截至2023年Q3", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=Q1_Q3"}
+{"span": "2026年同期", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=ANCHOR"}
+{"span": "前年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=ANCHOR"}
+{"span": "截至本年Ｑ3", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q1_Q3"}
+{"span": "2021年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=YEAR"}
+{"span": "本年第二季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q2"}
+{"span": "過去2個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 2 )"}
+{"span": "明年Q2", "refdate": "2025-02-05", "target": "T1: YEAR=REL(next_year); PERIOD=Q2"}
+{"span": "2024年第三季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=Q3"}
+{"span": "2022年6－7 月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=MONTH_RANGE(6, 7)"}
+{"span": "民國110年度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=false); PERIOD=YEAR"}
+{"span": "上年度第二季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=Q2"}
+{"span": "2026年前3季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=Q1_Q3"}
+{"span": "2026年Q2", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=Q2"}
+{"span": "上个月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_month)"}
+{"span": "3 月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(3)"}
+{"span": "半年度至今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=HTD"}
+{"span": "下季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_quarter)"}
+{"span": "2026年第 3 季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=Q3"}
+{"span": "民国110年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=false); PERIOD=YEAR"}
+{"span": "过去三年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 3 )"}
+{"span": "民國114年第1 季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=Q1"}
+{"span": "西元2022年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=YEAR"}
+{"span": "2024年第1 季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=Q1"}
+{"span": "上年度Q1", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=Q1"}
+{"span": "本季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_quarter)"}
+{"span": "2024年下半年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=H2"}
+{"span": "民國111年Q1-Q3", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(111, assumed=false); PERIOD=Q1_Q3"}
+{"span": "2021年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=YEAR"}
+{"span": "当年1Q", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q1"}
+{"span": "民國111年Q1~Q3", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(111, assumed=false); PERIOD=Q1_Q3"}
+{"span": "最近2個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 2 )"}
+{"span": "前年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=ANCHOR"}
+{"span": "115年下半年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=true); PERIOD=H2"}
+{"span": "下季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_quarter)"}
+{"span": "2026年前三季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=Q1_Q3"}
+{"span": "2021年3 月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=MONTH(3)"}
+{"span": "下季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_quarter)"}
+{"span": "这个月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_month)"}
+{"span": "当年6 月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(6)"}
+{"span": "当年度第3 季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q3"}
+{"span": "前年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=YEAR"}
+{"span": "最近3季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( quarters = 3 )"}
+{"span": "2019年同期", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=ANCHOR"}
+{"span": "2024年第2 季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=Q2"}
+{"span": "公元2027年2Q", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=Q2"}
+{"span": "2019年3Q", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=Q3"}
+{"span": "民国114年H1", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=H1"}
+{"span": "當年度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=YEAR"}
+{"span": "民国111年4月份", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(111, assumed=false); PERIOD=MONTH(4)"}
+{"span": "民国112年3Q", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(112, assumed=false); PERIOD=Q3"}
+{"span": "前年第3 季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=Q3"}
+{"span": "2月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(2)"}
+{"span": "2024年8-9月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=MONTH_RANGE(8, 9)"}
+{"span": "截止民國114年Q3", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=Q1_Q3"}
+{"span": "本年度第二季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q2"}
+{"span": "民國114年Ｈ1", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=H1"}
+{"span": "民國115年上 半年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=false); PERIOD=H1"}
+{"span": "2027年上半年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=H1"}
+{"span": "2022年第4 季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=Q4"}
+{"span": "2021年上半年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=H1"}
+{"span": "近1個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 1 )"}
+{"span": "过去1个月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 1 )"}
+{"span": "民国114年第1 季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=Q1"}
+{"span": "民國114年9–9月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=MONTH_RANGE(9, 9)"}
+{"span": "2023年4—5 月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=MONTH_RANGE(4, 5)"}
+{"span": "民国112年下 半年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(112, assumed=false); PERIOD=H2"}
+{"span": "近1個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 1 )"}
+{"span": "2025年第四季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=Q4"}
+{"span": "公元2019年Ｈ1", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=H1"}
+{"span": "2027年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=YEAR"}
+{"span": "108年同期", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(108, assumed=true); PERIOD=ANCHOR"}
+{"span": "過去3年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 3 )"}
+{"span": "2025年第一季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=Q1"}
+{"span": "这个月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_month)"}
+{"span": "次年第一季至第三季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(next_year); PERIOD=Q1_Q3"}
+{"span": "上年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "上季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_quarter)"}
+{"span": "2023年4~4 月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=MONTH_RANGE(4, 4)"}
+{"span": "110年QTD", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=true); PERIOD=QTD"}
+{"span": "去年 同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "去年 同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "民国110年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=false); PERIOD=YEAR"}
+{"span": "次年5—6 月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(next_year); PERIOD=MONTH_RANGE(5, 6)"}
+{"span": "前年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=ANCHOR"}
+{"span": "前4年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 4 )"}
+{"span": "当年度第1 季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q1"}
+{"span": "过去2季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( quarters = 2 )"}
+{"span": "上季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_quarter)"}
+{"span": "2021年第2 季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=Q2"}
+{"span": "民國108年H2", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(108, assumed=false); PERIOD=H2"}
+{"span": "从該年10月起至10月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH_RANGE(10, 10)"}
+{"span": "當年第2 季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q2"}
+{"span": "西元2021年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=YEAR"}
+{"span": "民國112年9–9月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(112, assumed=false); PERIOD=MONTH_RANGE(9, 9)"}
+{"span": "民國115年同期", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=false); PERIOD=ANCHOR"}
+{"span": "11月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(11)"}
+{"span": "过去4年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 4 )"}
+{"span": "113年Ｈ1", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=true); PERIOD=H1"}
+{"span": "2020年第三季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=Q3"}
+{"span": "年初到目前為止", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=YTD"}
+{"span": "當年第2 季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q2"}
+{"span": "近8季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( quarters = 8 )"}
+{"span": "上年度半年度迄今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=HTD"}
+{"span": "过去12个月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 12 )"}
+{"span": "民国114年第四季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=Q4"}
+{"span": "半年度迄今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=HTD"}
+{"span": "该年第 1 季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q1"}
+{"span": "2022年6~6月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=MONTH_RANGE(6, 6)"}
+{"span": "民國114年度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=YEAR"}
+{"span": "前年2 月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=MONTH(2)"}
+{"span": "110年Ｈ2", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=true); PERIOD=H2"}
+{"span": "2027年Q1~Q3", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=Q1_Q3"}
+{"span": "民国111年第 3 季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(111, assumed=false); PERIOD=Q3"}
+{"span": "明年第3季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(next_year); PERIOD=Q3"}
+{"span": "公元2027年第3季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=Q3"}
+{"span": "民國110年Q1–Q3", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=false); PERIOD=Q1_Q3"}
+{"span": "6 月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(6)"}
+{"span": "近1年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 1 )"}
+{"span": "前年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=YEAR"}
+{"span": "下月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_month)"}
+{"span": "民國110年第 1 季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=false); PERIOD=Q1"}
+{"span": "本季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_quarter)"}
+{"span": "2027年4—4月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=MONTH_RANGE(4, 4)"}
+{"span": "上年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "109年上半年度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(109, assumed=true); PERIOD=H1"}
+{"span": "109年5—6 月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(109, assumed=true); PERIOD=MONTH_RANGE(5, 6)"}
+{"span": "2021年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=YEAR"}
+{"span": "去年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "2019年11～11月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=MONTH_RANGE(11, 11)"}
+{"span": "下季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_quarter)"}
+{"span": "当年7 月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(7)"}
+{"span": "2021年Q1", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=Q1"}
+{"span": "2027年3–5 月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=MONTH_RANGE(3, 5)"}
+{"span": "2019年第四季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=Q4"}
+{"span": "113年第三季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=true); PERIOD=Q3"}
+{"span": "民國108年下 半年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(108, assumed=false); PERIOD=H2"}
+{"span": "3月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(3)"}
+{"span": "自明年1月起到4月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(next_year); PERIOD=MONTH_RANGE(1, 4)"}
+{"span": "當年度1Q", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q1"}
+{"span": "截止当年Ｑ3", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q1_Q3"}
+{"span": "公元2024年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=YEAR"}
+{"span": "2024年下半年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=H2"}
+{"span": "民国116年第二季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(116, assumed=false); PERIOD=Q2"}
+{"span": "前2年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 2 )"}
+{"span": "过去3个月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 3 )"}
+{"span": "近三年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 3 )"}
+{"span": "本季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_quarter)"}
+{"span": "2020年2~5月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=MONTH_RANGE(2, 5)"}
+{"span": "2019年第 3 季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=Q3"}
+{"span": "2021年第2 季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=Q2"}
+{"span": "上季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_quarter)"}
+{"span": "2025年Ｑ4", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=Q4"}
+{"span": "民国115年7 月份", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=false); PERIOD=MONTH(7)"}
+{"span": "HTD", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=HTD"}
+{"span": "半年度至今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=HTD"}
+{"span": "年初迄今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=YTD"}
+{"span": "2027年第 4 季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=Q4"}
+{"span": "從116年1月至1月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(116, assumed=true); PERIOD=MONTH_RANGE(1, 1)"}
+{"span": "2027年前三季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=Q1_Q3"}
+{"span": "2027年6 月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=MONTH(6)"}
+{"span": "2021年第四季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=Q4"}
+{"span": "2026年下 半年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=H2"}
+{"span": "该年7-10 月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH_RANGE(7, 10)"}
+{"span": "上個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_month)"}
+{"span": "西元2023年第三季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=Q3"}
+{"span": "2024年第四季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=Q4"}
+{"span": "2021年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=YEAR"}
+{"span": "2027年Ｑ2", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=Q2"}
+{"span": "MTD", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MTD"}
+{"span": "2021年Ｈ2", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=H2"}
+{"span": "民國112年同期", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(112, assumed=false); PERIOD=ANCHOR"}
+{"span": "該年下半年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=H2"}
+{"span": "前年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=ANCHOR"}
+{"span": "民国109年第二季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(109, assumed=false); PERIOD=Q2"}
+{"span": "2024年1-1 月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2024); PERIOD=MONTH_RANGE(1, 1)"}
+{"span": "2027年10~11月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=MONTH_RANGE(10, 11)"}
+{"span": "上年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "2023年上半年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=H1"}
+{"span": "2023年下半年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=H2"}
+{"span": "本季度至今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=QTD"}
+{"span": "111年下 半年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(111, assumed=true); PERIOD=H2"}
+{"span": "2019年12月份", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=MONTH(12)"}
+{"span": "116年同期", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(116, assumed=true); PERIOD=ANCHOR"}
+{"span": "2023年度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=YEAR"}
+{"span": "去年 同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "2026年3月-4月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=MONTH_RANGE(3, 4)"}
+{"span": "2026年第1 季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=Q1"}
+{"span": "前年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=YEAR"}
+{"span": "自2025年11月起到12月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=MONTH_RANGE(11, 12)"}
+{"span": "2023年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=YEAR"}
+{"span": "民国115年第 2 季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=false); PERIOD=Q2"}
+{"span": "去年 同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "下季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_quarter)"}
+{"span": "下個月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(next_month)"}
+{"span": "2019年第一季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=Q1"}
+{"span": "2020年Ｑ4", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=Q4"}
+{"span": "该年7～8月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH_RANGE(7, 8)"}
+{"span": "民国113年第 1 季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=false); PERIOD=Q1"}
+{"span": "2025年第1季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=Q1"}
+{"span": "113年第二季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=true); PERIOD=Q2"}
+{"span": "2019年本月至今", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2019); PERIOD=MTD"}
+{"span": "2026年前3季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2026); PERIOD=Q1_Q3"}
+{"span": "去年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "去年 同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "116年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(116, assumed=true); PERIOD=YEAR"}
+{"span": "2020年下 半年", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=H2"}
+{"span": "民国108年1Q", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(108, assumed=false); PERIOD=Q1"}
+{"span": "民国114年第1 季度", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=Q1"}
+{"span": "民國114年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(114, assumed=false); PERIOD=YEAR"}
+{"span": "HTD", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=HTD"}
+{"span": "2025年半年度至今", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=HTD"}
+{"span": "上年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "前年11月~12月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=MONTH_RANGE(11, 12)"}
+{"span": "民国111年2－3月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(111, assumed=false); PERIOD=MONTH_RANGE(2, 3)"}
+{"span": "2020年第3季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2020); PERIOD=Q3"}
+{"span": "2021年年初到目前為止", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=YTD"}
+{"span": "去年 同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "2023年第三季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=Q3"}
+{"span": "该年第2季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q2"}
+{"span": "去年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "年初迄今", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=YTD"}
+{"span": "民国110年上 半年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(110, assumed=false); PERIOD=H1"}
+{"span": "西元2023年第 3 季", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=Q3"}
+{"span": "去年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "近3个月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( months = 3 )"}
+{"span": "MTD", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MTD"}
+{"span": "2027年第2季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=Q2"}
+{"span": "2027年Q1~Q3", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=Q1_Q3"}
+{"span": "前1年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 1 )"}
+{"span": "当年度上 半年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=H1"}
+{"span": "2027年10 月份", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2027); PERIOD=MONTH(10)"}
+{"span": "今年第三季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q3"}
+{"span": "前年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=ANCHOR"}
+{"span": "上季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(last_quarter)"}
+{"span": "民国115年2月到2月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(115, assumed=false); PERIOD=MONTH_RANGE(2, 2)"}
+{"span": "當年度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=YEAR"}
+{"span": "民国111年3月～6月", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(111, assumed=false); PERIOD=MONTH_RANGE(3, 6)"}
+{"span": "2022年第二季度", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=Q2"}
+{"span": "2023年年初到目前为止", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2023); PERIOD=YTD"}
+{"span": "上年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "2025年3－3 月", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2025); PERIOD=MONTH_RANGE(3, 3)"}
+{"span": "民国113年3 月份", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=false); PERIOD=MONTH(3)"}
+{"span": "MTD", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MTD"}
+{"span": "2月份", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(2)"}
+{"span": "当年下半年度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=H2"}
+{"span": "2022年Ｈ2", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2022); PERIOD=H2"}
+{"span": "10月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=MONTH(10)"}
+{"span": "去年 同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(same_period_last_year); PERIOD=ANCHOR"}
+{"span": "上年度9－10 月", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=MONTH_RANGE(9, 10)"}
+{"span": "前5年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 5 )"}
+{"span": "民国113年下半年", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(113, assumed=false); PERIOD=H2"}
+{"span": "去年下半年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(last_year); PERIOD=H2"}
+{"span": "本年第3 季度", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=Q3"}
+{"span": "前年同期", "refdate": "2025-02-05", "target": "T1: YEAR=REL(two_years_ago); PERIOD=ANCHOR"}
+{"span": "截至109年第3季", "refdate": "2025-02-05", "target": "T1: YEAR=ROC(109, assumed=true); PERIOD=Q1_Q3"}
+{"span": "過去3季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( quarters = 3 )"}
+{"span": "2021年Ｈ1", "refdate": "2025-02-05", "target": "T1: YEAR=AD(2021); PERIOD=H1"}
+{"span": "本季", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=REL(this_quarter)"}
+{"span": "过去三年", "refdate": "2025-02-05", "target": "T1: YEAR=REL(this_year); PERIOD=ROLLING( years = 3 )"}

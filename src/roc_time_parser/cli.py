@@ -28,11 +28,13 @@ def main(argv: list[str] | None = None) -> int:
     p_norm = sub.add_parser("normalize", help="Normalize a span to DSL (Stage B).")
     p_norm.add_argument("--span", required=True)
     p_norm.add_argument("--refdate", type=_parse_date, required=True)
+    p_norm.add_argument("--normalizer-dir", default=None, help="Seq2seq normalizer model directory.")
 
     p_parse = sub.add_parser("parse", help="Run full pipeline on a prompt.")
     p_parse.add_argument("--text", required=True)
     p_parse.add_argument("--refdate", type=_parse_date, required=True)
     p_parse.add_argument("--threshold", type=float, default=0.5)
+    p_parse.add_argument("--normalizer-dir", default=None, help="Seq2seq normalizer model directory.")
 
     args = parser.parse_args(argv)
 
@@ -50,8 +52,19 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "normalize":
         from roc_time_parser.normalizer.infer import normalize_span
 
-        settings = load_settings()
-        dsl, conf = normalize_span(args.span, refdate=args.refdate, settings=settings)
+        if args.normalizer_dir:
+            from roc_time_parser.normalizer.model import load_normalizer
+
+            n_model, n_tok = load_normalizer(model_dir=args.normalizer_dir)
+            dsl, conf = normalize_span(
+                args.span,
+                refdate=args.refdate,
+                normalizer_model=n_model,
+                normalizer_tokenizer=n_tok,
+            )
+        else:
+            settings = load_settings()
+            dsl, conf = normalize_span(args.span, refdate=args.refdate, settings=settings)
         print(json.dumps({"dsl": dsl, "confidence": conf}, ensure_ascii=False))
         return 0
 
@@ -61,9 +74,23 @@ def main(argv: list[str] | None = None) -> int:
         from roc_time_parser.policy import Policy
         from roc_time_parser.extractor.model import load_extractor
 
-        settings = load_settings()
+        settings = None
+        normalizer_model = None
+        normalizer_tokenizer = None
+        if args.normalizer_dir:
+            from roc_time_parser.normalizer.model import load_normalizer
+
+            normalizer_model, normalizer_tokenizer = load_normalizer(model_dir=args.normalizer_dir)
+        else:
+            settings = load_settings()
         ex_model, ex_tok = load_extractor()
-        models = Models(extractor_model=ex_model, extractor_tokenizer=ex_tok, normalizer_settings=settings)
+        models = Models(
+            extractor_model=ex_model,
+            extractor_tokenizer=ex_tok,
+            normalizer_settings=settings,
+            normalizer_model=normalizer_model,
+            normalizer_tokenizer=normalizer_tokenizer,
+        )
         out: dict[str, Any] = parse_prompt(
             args.text,
             refdate=args.refdate,
