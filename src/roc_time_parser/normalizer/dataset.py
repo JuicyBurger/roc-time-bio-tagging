@@ -57,16 +57,27 @@ def prepare_seq2seq_features(
 
     inputs = [make_input(s, r) for s, r in zip(spans, refdates, strict=True)]
 
+    # Fixed-length padding so every batch has same dimensions (avoids CUDA cuBLAS issues)
     model_inputs = tokenizer(
         inputs,
         max_length=max_source_length,
         truncation=True,
+        padding="max_length",
     )
     labels = tokenizer(
         text_target=targets,
         max_length=max_target_length,
         truncation=True,
+        padding="max_length",
     )
-    model_inputs["labels"] = labels["input_ids"]
+    # Loss ignores positions with -100; mask padded label positions
+    pad_id = tokenizer.pad_token_id
+    label_ids = labels["input_ids"]
+    if pad_id is not None:
+        label_ids = [
+            [-100 if tid == pad_id else tid for tid in row]
+            for row in label_ids
+        ]
+    model_inputs["labels"] = label_ids
     return model_inputs
 

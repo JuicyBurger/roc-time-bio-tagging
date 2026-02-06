@@ -6,7 +6,7 @@ from datetime import date
 import json
 from typing import Any
 
-from roc_time_parser.config import load_settings
+from roc_time_parser.config import load_dotenv_into_env, load_settings
 
 
 def _parse_date(s: str) -> date:
@@ -28,15 +28,26 @@ def main(argv: list[str] | None = None) -> int:
     p_norm = sub.add_parser("normalize", help="Normalize a span to DSL (Stage B).")
     p_norm.add_argument("--span", required=True)
     p_norm.add_argument("--refdate", type=_parse_date, required=True)
-    p_norm.add_argument("--normalizer-dir", default=None, help="Seq2seq normalizer model directory.")
+    p_norm.add_argument(
+        "--normalizer-dir",
+        default=None,
+        help="Seq2seq normalizer model directory (default: NORMALIZER_MODEL_DIR or artifacts/normalizer).",
+    )
 
     p_parse = sub.add_parser("parse", help="Run full pipeline on a prompt.")
     p_parse.add_argument("--text", required=True)
     p_parse.add_argument("--refdate", type=_parse_date, required=True)
     p_parse.add_argument("--threshold", type=float, default=0.5)
-    p_parse.add_argument("--normalizer-dir", default=None, help="Seq2seq normalizer model directory.")
+    p_parse.add_argument(
+        "--normalizer-dir",
+        default=None,
+        help="Seq2seq normalizer model directory (default: NORMALIZER_MODEL_DIR or artifacts/normalizer).",
+    )
 
     args = parser.parse_args(argv)
+
+    # So EXTRACTOR_MODEL_DIR / NORMALIZER_MODEL_DIR from .env are visible to model loaders
+    load_dotenv_into_env()
 
     # Lazy imports so `pip install -e .` works even before models are trained.
     if args.cmd == "extract":
@@ -51,11 +62,14 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.cmd == "normalize":
         from roc_time_parser.normalizer.infer import normalize_span
+        from roc_time_parser.normalizer.model import load_normalizer
 
-        if args.normalizer_dir:
-            from roc_time_parser.normalizer.model import load_normalizer
-
+        n_model, n_tok = None, None
+        try:
             n_model, n_tok = load_normalizer(model_dir=args.normalizer_dir)
+        except FileNotFoundError:
+            pass
+        if n_model is not None and n_tok is not None:
             dsl, conf = normalize_span(
                 args.span,
                 refdate=args.refdate,
@@ -73,15 +87,14 @@ def main(argv: list[str] | None = None) -> int:
         from roc_time_parser.pipeline import Models
         from roc_time_parser.policy import Policy
         from roc_time_parser.extractor.model import load_extractor
+        from roc_time_parser.normalizer.model import load_normalizer
 
         settings = None
         normalizer_model = None
         normalizer_tokenizer = None
-        if args.normalizer_dir:
-            from roc_time_parser.normalizer.model import load_normalizer
-
+        try:
             normalizer_model, normalizer_tokenizer = load_normalizer(model_dir=args.normalizer_dir)
-        else:
+        except FileNotFoundError:
             settings = load_settings()
         ex_model, ex_tok = load_extractor()
         models = Models(

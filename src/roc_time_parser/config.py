@@ -47,6 +47,16 @@ def _default_dotenv_path() -> Path:
     return Path.cwd() / ".env"
 
 
+def load_dotenv_into_env(dotenv_path: Path | None = None) -> None:
+    """
+    Load .env KEY=VALUE pairs into os.environ (setdefault so existing env wins).
+    Call early so EXTRACTOR_MODEL_DIR, NORMALIZER_MODEL_DIR, etc. from .env are visible.
+    """
+    path = dotenv_path or _default_dotenv_path()
+    for k, v in _parse_dotenv(path).items():
+        os.environ.setdefault(k, v)
+
+
 def load_settings(dotenv_path: Path | None = None) -> Settings:
     """
     Load settings from environment variables, falling back to `.env`.

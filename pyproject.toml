@@ -12,6 +12,7 @@ license = { text = "Proprietary" }
 authors = [{ name = "KSI" }]
 dependencies = [
   "transformers",
+  "protobuf",
   "datasets",
   "accelerate",
   "torch",

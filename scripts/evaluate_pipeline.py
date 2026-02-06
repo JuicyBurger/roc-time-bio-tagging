@@ -4,6 +4,7 @@ import argparse
 from dataclasses import dataclass
 from datetime import date
 import json
+import os
 from pathlib import Path
 from typing import Any, Optional
 
@@ -63,13 +64,26 @@ def _span_prf(gold: list[tuple[int, int]], pred: list[tuple[int, int]]) -> PRF:
 
 
 def main(argv: list[str] | None = None) -> int:
+    # Load .env first so EXTRACTOR_MODEL_DIR / NORMALIZER_MODEL_DIR are available for defaults
+    from roc_time_parser.config import load_dotenv_into_env
+
+    load_dotenv_into_env()
+
     ap = argparse.ArgumentParser(prog="evaluate_pipeline.py")
     ap.add_argument("--input", default="data/spans_labeled.jsonl")
     ap.add_argument("--refdate", default=date.today().isoformat())
     ap.add_argument("--stage", choices=["a", "b", "e2e", "all"], default="all")
     ap.add_argument("--threshold", type=float, default=0.5, help="Extractor threshold.")
-    ap.add_argument("--extractor-dir", default=None, help="Trained extractor model directory (default: EXTRACTOR_MODEL_DIR or artifacts/extractor_runA, artifacts/extractor).")
-    ap.add_argument("--normalizer-dir", default=None, help="Seq2seq normalizer model directory.")
+    ap.add_argument(
+        "--extractor-dir",
+        default=os.environ.get("EXTRACTOR_MODEL_DIR"),
+        help="Extractor model directory (default: EXTRACTOR_MODEL_DIR from env or .env).",
+    )
+    ap.add_argument(
+        "--normalizer-dir",
+        default=os.environ.get("NORMALIZER_MODEL_DIR"),
+        help="Normalizer model directory (default: NORMALIZER_MODEL_DIR from env or .env).",
+    )
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--out", default="artifacts/eval_results.jsonl")
     args = ap.parse_args(argv)
@@ -104,26 +118,33 @@ def main(argv: list[str] | None = None) -> int:
     normalizer_model = None
     normalizer_tokenizer = None
     if do_b or do_e2e:
-        if args.normalizer_dir:
-            try:
-                from roc_time_parser.normalizer.model import load_normalizer
+        try:
+            from roc_time_parser.normalizer.model import load_normalizer
 
-                normalizer_model, normalizer_tokenizer = load_normalizer(model_dir=args.normalizer_dir)
-            except Exception as e:  # noqa: BLE001
-                print(f"[warn] normalizer model not available: {e}")
-                normalizer_model, normalizer_tokenizer = None, None
-                if args.stage == "b":
-                    return 2
-        else:
+            normalizer_model, normalizer_tokenizer = load_normalizer(model_dir=args.normalizer_dir)
+        except FileNotFoundError:
+            normalizer_model, normalizer_tokenizer = None, None
             try:
                 from roc_time_parser.config import load_settings
 
                 settings = load_settings()
             except Exception as e:  # noqa: BLE001
-                print(f"[warn] normalizer settings not available: {e}")
+                print(f"[warn] normalizer model/settings not available: {e}")
                 settings = None
                 if args.stage == "b":
                     return 2
+        except Exception as e:  # noqa: BLE001
+            print(f"[warn] normalizer model not available: {e}")
+            normalizer_model, normalizer_tokenizer = None, None
+            try:
+                from roc_time_parser.config import load_settings
+
+                settings = load_settings()
+            except Exception as e2:  # noqa: BLE001
+                print(f"[warn] normalizer settings not available: {e2}")
+                settings = None
+            if args.stage == "b":
+                return 2
 
     # Stage A metrics accumulator
     a_tp = a_fp = a_fn = 0

@@ -13,6 +13,10 @@ Create `.env` at repo root:
 MODEL_NAME=gemma3:12b
 OLLAMA_HOST=http://<host>:11434
 OLLAMA_URL=http://<host>:11434/api/generate
+
+# Optional: default model directories (used when CLI/eval omit --extractor-dir / --normalizer-dir)
+EXTRACTOR_MODEL_DIR=artifacts/extractor
+NORMALIZER_MODEL_DIR=artifacts/normalizer
 ```
 
 ## Install (venv recommended)

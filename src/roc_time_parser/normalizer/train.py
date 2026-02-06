@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+import torch
 from transformers import DataCollatorForSeq2Seq, Seq2SeqTrainer, Seq2SeqTrainingArguments
 
 from roc_time_parser.normalizer.dataset import load_normalizer_jsonl, prepare_seq2seq_features
@@ -23,10 +24,20 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--max-source-length", type=int, default=128)
     ap.add_argument("--max-target-length", type=int, default=128)
     ap.add_argument("--resume-from-checkpoint", default=None)
+    ap.add_argument(
+        "--no-cuda",
+        action="store_true",
+        help="Train on CPU (use if CUDA gives CUBLAS_STATUS_INVALID_VALUE).",
+    )
     args = ap.parse_args(argv)
 
     out_dir = Path(args.output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
+
+    # When using GPU, disable TF32 to avoid some cuBLAS errors on Ampere+ GPUs
+    if not args.no_cuda and torch.cuda.is_available():
+        torch.backends.cuda.matmul.allow_tf32 = False
+        torch.backends.cudnn.allow_tf32 = False
 
     model, tokenizer = init_normalizer_from_base(args.base_model)
 
@@ -52,7 +63,10 @@ def main(argv: list[str] | None = None) -> int:
         },
     )
 
-    data_collator = DataCollatorForSeq2Seq(tokenizer, model=model)
+    # Pad to multiple of 8 so cuBLAS batched attention kernels get valid dimensions
+    data_collator = DataCollatorForSeq2Seq(
+        tokenizer, model=model, pad_to_multiple_of=8
+    )
 
     training_args = Seq2SeqTrainingArguments(
         output_dir=str(out_dir),
@@ -69,6 +83,7 @@ def main(argv: list[str] | None = None) -> int:
         report_to=[],
         max_steps=args.max_steps,
         predict_with_generate=True,
+        use_cpu=args.no_cuda,
     )
 
     trainer = Seq2SeqTrainer(
