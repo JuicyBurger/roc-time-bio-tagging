@@ -21,6 +21,8 @@ dependencies = [
   "pydantic",
   "rapidfuzz",
   "requests",
+  "fastapi",
+  "uvicorn[standard]",
 ]
 
 [project.optional-dependencies]
